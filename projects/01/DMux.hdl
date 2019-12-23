@@ -14,5 +14,8 @@ CHIP DMux {
     OUT a, b;
 
     PARTS:
-    // Put your code here:
+    Not(in=sel, out=notSel);
+    And(a=sel, b=notSel, out=zero);
+    Mux(a=in, b=zero, sel=sel, out=a);
+    Mux(a=zero, b=in, sel=sel, out=b);
 }
