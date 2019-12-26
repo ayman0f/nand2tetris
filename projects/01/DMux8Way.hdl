@@ -16,5 +16,23 @@ CHIP DMux8Way {
     OUT a, b, c, d, e, f, g, h;
 
     PARTS:
-    // Put your code here:
+    // Split into XX0 & XX1 groups
+    Mux(a=in, b=false, sel=sel[0], out=aceg);
+    Mux(a=false, b=in, sel=sel[0], out=bdfh);
+    
+    // Split into X00, X01, X10, X11 groups
+    Mux(a=aceg, b=false, sel=sel[1], out=ae);
+    Mux(a=bdfh, b=false, sel=sel[1], out=bf);
+    Mux(a=false, b=aceg, sel=sel[1], out=cg);
+    Mux(a=false, b=bdfh, sel=sel[1], out=dh);
+   
+    // Output
+    Mux(a=ae, b=false, sel=sel[2], out=a);
+    Mux(a=bf, b=false, sel=sel[2], out=b);
+    Mux(a=cg, b=false, sel=sel[2], out=c);
+    Mux(a=dh, b=false, sel=sel[2], out=d);
+    Mux(a=false, b=ae, sel=sel[2], out=e);
+    Mux(a=false, b=bf, sel=sel[2], out=f);
+    Mux(a=false, b=cg, sel=sel[2], out=g);
+    Mux(a=false, b=dh, sel=sel[2], out=h);
 }

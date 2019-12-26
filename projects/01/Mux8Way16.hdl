@@ -18,5 +18,11 @@ CHIP Mux8Way16 {
     OUT out[16];
 
     PARTS:
-    // Put your code here:
+    Mux16(a[0..15]=a[0..15], b[0..15]=b[0..15], sel=sel[0], out=x1);
+    Mux16(a[0..15]=c[0..15], b[0..15]=d[0..15], sel=sel[0], out=x2);
+    Mux16(a[0..15]=e[0..15], b[0..15]=f[0..15], sel=sel[0], out=x3);
+    Mux16(a[0..15]=g[0..15], b[0..15]=h[0..15], sel=sel[0], out=x4);
+    Mux16(a[0..15]=x1, b[0..15]=x2, sel=sel[1], out=y1);
+    Mux16(a[0..15]=x3, b[0..15]=x4, sel=sel[1], out=y2);
+    Mux16(a[0..15]=y1, b[0..15]=y2, sel=sel[2], out=out);
 }
